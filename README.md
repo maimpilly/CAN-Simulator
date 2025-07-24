@@ -14,7 +14,7 @@ This project focuses on the software-level challenges of the CAN protocol: desig
 
 The CAN bus is fundamentally a broadcast network. To reliably simulate this broadcast behavior between two separate running scripts (processes), this project uses **UDP (User Datagram Protocol) sockets** as the transport layer.
 
-This is a common technique in virtual automotive testing, analogous to **"CAN over Ethernet"**, where CAN frames are sent over an IP network. The core of the project remains the **CAN data protocol**—the strict formatting, encoding, and decoding of the 8-byte data payload—while UDP provides a robust and universally compatible "virtual wire" between the ECUs.
+This is a common technique in virtual automotive testing, analogous to **"CAN over Ethernet"**, where CAN frames are sent over an IP network. The core of the project remains the **CAN data protocol**, which involves the strict formatting, encoding, and decoding of the 8-byte data payload. At the same time, UDP provides a robust and universally compatible "virtual wire" between the ECUs.
 
 ## System Design
 
@@ -37,11 +37,11 @@ A single CAN message, `EngineStatus`, is defined for this simulation with a uniq
 
 The 8-byte data payload is structured as follows:
 ```
-| Signal Name    | Start Bit | Length (bits) | Occupied Bytes | Description                       |
-| :------------- | :-------: | :-----------: | :------------: | :-------------------------------- |
+| Signal Name    | Start Bit | Length (bits) | Occupied Bytes | Description                          |
+| :------------- | :-------: | :-----------: | :------------: | :------------------------------------|   
 | `EngineRPM`    | 0         | 16            | 0-1            | The engine's revolutions per minute. |
-| `VehicleSpeed` | 16        | 8             | 2              | The vehicle's speed in km/h.      |
-| *Unused* | 24        | 40            | 3-7            | Reserved for future use.          |
+| `VehicleSpeed` | 16        | 8             | 2              | The vehicle's speed in km/h.         |
+| *Unused*       | 24        | 40            | 3-7            | Reserved for future use.             |
 ```
 
 ## How to Run the Simulation
