@@ -1,0 +1,27 @@
+name: Python CI for CAN Simulator
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the repository code
+    - uses: actions/checkout@v3
+
+    # Step 2: Set up the Python environment
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x'
+
+    # Step 3: Check for syntax errors
+    # This command compiles the Python files into bytecode without running them,
+    # which will fail if there are any syntax errors.
+    - name: Syntax Check
+      run: python -m py_compile engine_ecu.py dashboard_ecu.py

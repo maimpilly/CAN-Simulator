@@ -62,6 +62,24 @@ This simulation requires two separate terminals running concurrently.
     python dashboard_ecu.py
     ```
 
+### Build & Execution Steps
+
+This project also uses CMake to manage the build process.
+
+1.  Clone the repository.
+2.  Open a terminal in the project's root directory.
+3.  **Configure the project** by creating a build directory:
+    ```bash
+    cmake -B build
+    ```
+4.  **Compile the project** using the generated build files:
+    ```bash
+    cmake --build build
+    ```
+5.  **Run the executable**, which is now located inside the `build` directory:
+    ```bash
+    ./build/spi_test
+
 #### Expected Output
 
 * **Terminal 1 (Engine):** You will see a live-updating display of the engine's state and the raw hexadecimal data being sent.
